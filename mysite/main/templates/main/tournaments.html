@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Battle Game</title>
+</head>
+<body>
+<h3>Torneos</h3>
+		<div>
+				
+			{% if latest_tournament_list %}
+				<ul style="list-style-type:none">
+				{% for tournament in latest_tournament_list %}
+					<li><a href="{% url 'tournament' tournament.name %}">{{ tournament.name }}</a>      JUGADORES:    {{ tournament.dfighters.all|join:", " }}         Comienza el {{tournament.start_date}}, termina el {{tournament.finish_date}}</li>
+				{% endfor %}
+				</ul>
+			{% else %}
+				<p>No hay torneos creados.</p>
+			{% endif %}
+		</div>
+</body>
+</html>

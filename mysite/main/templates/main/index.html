@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Battle Game</title>
+</head>
+<body>
+    
+<h1>MENU PRINCIPAL</h1>
+
+
+<div>
+	<a href="{% url 'tournaments' %}"><h3>Torneos</h3></a>
+{% if tournament_list %}
+	<ul style="list-style-type:none">
+    {% for tournament in tournament_list %}
+        <li><a href="{% url 'tournament' tournament.name %}">{{tournament}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay torneos creados.</p>
+{% endif %}
+</div>
+<div><a href="{% url 'tournament_new' %}">Crear Torneo</a></div>
+
+
+<div>
+    <a href="{% url 'fighters' %}"><h3>Fighters</h3></a>
+
+    {% if fighter_list %}
+        <ul style="list-style-type:none">
+        {% for fighter in fighter_list %}
+            <li><a href="{% url 'fighter' fighter.alias %}">{{fighter}}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay jugadores creados.</p>
+    {% endif %}    
+
+</div>
+<div><a href="{% url 'fighter_new' %}">Crear Jugador</a></div><br>
+
+
+<div><a href="{% url 'initTournament' %}">Iniciar Torneo</a></div>
+
+<div><h3>Ranking</h3></div>
+
+<div><a href="{% url 'disputedtournaments' %}"><h3>Torneos Disputados</h3></a></div>
+<div>
+    {% if dtournaments_list %}
+        <ul style="list-style-type:none">
+        {% for dt in dtournaments_list %}
+            <li><a href="{% url 'disputedtournament' dt.name_id %}">{{dt.name_id}}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay jugadores creados.</p>
+    {% endif %}   
+
+</div>
+
+</body>
+</html>

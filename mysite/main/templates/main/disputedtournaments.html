@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Battle Game</title>
+</head>
+<body>
+<h3>Torneos</h3>
+		<div>
+				
+			{% if dtournaments_list %}
+				<ul style="list-style-type:none">
+				{% for tournament in dtournaments_list %}
+					<li><a href="{% url 'disputedtournament' tournament.name_id %}">{{tournament.name}}</a>{{tournament.name.dfighters.all|join:", " }}</li>
+				{% endfor %}
+				</ul>
+			{% else %}
+				<p>No hay jugadores creados.</p>
+			{% endif %}
+		</div>
+
+	
+</body>
+</html>

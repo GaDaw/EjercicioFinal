@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Battle Game</title>
+</head>
+<body>
+<h3>Fighters</h3>
+		<div>
+				
+			{% if fighter_list %}
+				<ul style="list-style-type:none">
+				{% for fighter in fighter_list %}
+					<li><a href="{% url 'fighter' fighter.alias%}">{{ fighter}}</a> </li>
+				{% endfor %}
+				</ul>
+			{% else %}
+				<p>No hay jugadores creados.</p>
+			{% endif %}
+		</div>
+
+	
+</body>
+</html>
